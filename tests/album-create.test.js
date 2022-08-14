@@ -41,15 +41,14 @@ describe('create album', () => {
           name,
           year,
         });
-        console.log(`${name}, ${year}`);
         expect(res.status).to.equal(201);
-        console.log('test');
         const [[albumEntries]] = await db.query(
           `SELECT * FROM Album WHERE name = '${name}'`
         );
 
         expect(albumEntries.name).to.equal(name);
         expect(albumEntries.year).to.equal(year);
+        expect(albumEntries.artistId).to.equal(expected.id);
       });
     });
   });
