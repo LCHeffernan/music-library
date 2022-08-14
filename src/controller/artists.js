@@ -26,7 +26,6 @@ exports.read = async (req, res) => {
     if (!artistId) {
       const [artists] = await db.query('SELECT * from Artist');
       res.status(200).json(artists);
-      console.log('hello');
     } else {
       const [[artist]] = await db.query('SELECT * from Artist WHERE id = ?', [
         artistId,
@@ -48,17 +47,39 @@ exports.update = async (req, res) => {
   const data = req.body;
 
   const db = await getDb();
-  console.log('test ' + artistId + ' ' + data);
 
-  const [{ affectedRows }] = await db.query(
-    'UPDATE Artist SET ? WHERE id = ?',
-    [data, artistId]
-  );
+  try {
+    const [{ affectedRows }] = await db.query(
+      'UPDATE Artist SET ? WHERE id = ?',
+      [data, artistId]
+    );
 
-  if (affectedRows) {
-    res.status(200).send();
-  } else {
-    res.sendStatus(404);
+    if (affectedRows) {
+      res.status(200).send();
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    res.sendStatus(500);
   }
   await db.end();
+};
+
+exports.destroy = async (req, res) => {
+  const { artistId } = req.params;
+  const db = await getDb();
+
+  try {
+    const [{ affectedRows }] = await db.query(
+      'DELETE FROM Artist WHERE id = ?',
+      [artistId]
+    );
+    if (affectedRows) {
+      res.status(200).json(affectedRows);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+  }
 };

@@ -18,7 +18,6 @@ const tearDownDatabase = async () => {
 
     await db.query(`DROP DATABASE ${DB_NAME}`);
     await db.end();
-    
   } catch (err) {
     console.log(
       `Your environment variables might be wrong. Please double check .env file`
