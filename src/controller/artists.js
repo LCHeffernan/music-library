@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
     res.sendStatus(500);
   }
 
-  db.end();
+  await db.end();
 };
 
 exports.read = async (req, res) => {
@@ -28,7 +28,7 @@ exports.read = async (req, res) => {
       res.status(200).json(artists);
       console.log('hello');
     } else {
-      const [[artist]] = await db.query('SELECT * from Artist WHERE id=?', [
+      const [[artist]] = await db.query('SELECT * from Artist WHERE id = ?', [
         artistId,
       ]);
       if (artist) {
@@ -40,15 +40,25 @@ exports.read = async (req, res) => {
   } catch (err) {
     res.sendStatus(500);
   }
-  db.end();
+  await db.end();
 };
 
-// exports.readById = async (req, res) =>{
-//     const { artistId } = req.params;
-//   const db = await getDb();
-//  const [ [artist] ] = await db.query('SELECT * from Artist WHERE id=?',[
-//             artistId
-//         ]);
-//         res.status(200).json(artist);
-//         db.end();
-// };
+exports.update = async (req, res) => {
+  const { artistId } = req.params;
+  const data = req.body;
+
+  const db = await getDb();
+  console.log('test ' + artistId + ' ' + data);
+
+  const [{ affectedRows }] = await db.query(
+    'UPDATE Artist SET ? WHERE id = ?',
+    [data, artistId]
+  );
+
+  if (affectedRows) {
+    res.status(200).send();
+  } else {
+    res.sendStatus(404);
+  }
+  await db.end();
+};
