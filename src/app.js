@@ -8,5 +8,6 @@ app.use(express.json());
 
 app.use('/artist', artistRouter);
 app.use('/artist', albumRouter);
+app.use('/album', albumRouter);
 
 module.exports = app;

@@ -23,8 +23,8 @@ describe('create album', () => {
       ]),
     ]);
 
-     [artists] = await db.query('SELECT * from Artist');
-});
+    [artists] = await db.query('SELECT * from Artist');
+  });
 
   afterEach(async () => {
     await db.query('DELETE FROM Album');
@@ -33,14 +33,16 @@ describe('create album', () => {
 
   describe('/artist/:artistId/album', () => {
     describe('POST', () => {
-      it.only('creates a new album in the database', async () => {
+      it('creates a new album in the database', async () => {
         const name = 'News of the World';
         const year = 1977;
         const expected = artists[0];
-        const res = await request(app).post(`/artist/${expected.id}/album`).send({
-          name,
-          year,
-        });
+        const res = await request(app)
+          .post(`/artist/${expected.id}/album`)
+          .send({
+            name,
+            year,
+          });
         expect(res.status).to.equal(201);
         const [[albumEntries]] = await db.query(
           `SELECT * FROM Album WHERE name = '${name}'`
