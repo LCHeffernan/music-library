@@ -32,6 +32,7 @@ There are 4 more routes that can be used:
 |GET|```localhost:3000/artist/<id>```|Displays the artist that matches the given id.|
 |PATCH|```localhost:3000/artist/<id>```|Updates the entry with the given id and the data sent in the JSON body. Can update the whole entry or just parts of it.|
 |DELETE|```localhost:3000/artist/<id>```|Deletes the artist entry from the database, with the given id.|
+
 The Album table works in a similar way. An entry is created by sending a POST request to ```localhost:3000/artist/<artistid>/album``` (artistid must match an id that exists in the artist table). Send the request with a JSON body like this:
 ```
 {
