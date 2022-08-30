@@ -11,7 +11,7 @@ describe('delete album', () => {
   beforeEach(async () => {
     try {
       db = await getDb();
-      const newArtists = await Promise.all([
+      await Promise.all([
         db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
           'Queen',
           'rock',

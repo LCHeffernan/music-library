@@ -26,7 +26,7 @@ To start you will need to create at least 1 artist. Using Postman send a POST re
 ```
 
 There are 4 more routes that can be used:
-|Request | Route | Description |
+| Request | Route | Description |
 | ------ | ------ | ------ |
 |GET|```localhost:3000/artist```| Displays all artists in the database.| 
 |GET|```localhost:3000/artist/<id>```|Displays the artist that matches the given id.|

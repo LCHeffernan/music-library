@@ -11,7 +11,7 @@ describe('read album', () => {
   beforeEach(async () => {
     try {
       db = await getDb();
-      const newArtists = await Promise.all([
+      await Promise.all([
         db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
           'Queen',
           'rock',
@@ -27,7 +27,6 @@ describe('read album', () => {
       ]);
 
       [artists] = await db.query('SELECT * from Artist');
-      // console.log(newArtists, artists);
       await Promise.all([
         db.query('INSERT INTO Album (name, year, artistId) VALUES(?, ?, ?)', [
           'News of the world',
@@ -86,12 +85,11 @@ describe('read album', () => {
         const res = await request(app).get('/album').send();
 
         expect(res.status).to.equal(200);
-        console.log(res.body);
         expect(res.body.length).to.equal(3);
 
         res.body.forEach((albumRecord) => {
           const expected = albums.find((a) => a.id === albumRecord.id);
-          console.log(albumRecord + ' ' + expected);
+
           expect(albumRecord).to.deep.equal(expected);
         });
       });

@@ -1,11 +1,9 @@
-const db = require('../services/db');
 const getDb = require('../services/db');
 
 exports.create = async (req, res) => {
   const db = await getDb();
   const { name, year } = req.body;
   const { artistId } = req.params;
-  console.log(`${name}, ${year}, ${artistId}`);
 
   const [[checkArtistExists]] = await db.query(
     'SELECT * from Artist WHERE id = ?',
