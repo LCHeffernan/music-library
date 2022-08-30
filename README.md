@@ -4,6 +4,11 @@ ___
 This was my first backend project which involved using SQL, MySQL and express.js, which was tested using Mocha/Chai and Supertest, the tests can be found in the tests folder.
 
 A music library is created using CRUD operations for an Artist table and an Album table. The Album table is linked to the Artist table via id in the artist table being a foreign key (artist id) in the Album table.
+In the future I would like to add 
+* Validations and constraints to the models. 
+* Helper functions to make the code DRY.
+* Mocks, stubs and spies in testing.
+
 ___
 
 ## Download and setup.
