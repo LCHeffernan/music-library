@@ -3,7 +3,7 @@ ___
 ## Description.
 This was my first backend project which involved using SQL, MySQL and express.js, which was tested using Mocha/Chai and Supertest, the tests can be found in the tests folder.
 
-A music library is created using CRUD operations for an Artist table and an Album table. The Album table is linked to the Artist table via id in the artist table being a foreign key (artist id) in the Album table.
+A music library is created using CRUD operations for an Artist table and an Album models. The Album table is linked to the Artist table via id in the artist table being a foreign key (artist id) in the Album table.
 In the future I would like to add 
 * Validations and constraints to the models. 
 * Helper functions to make the code DRY.
@@ -12,17 +12,17 @@ In the future I would like to add
 ___
 
 ## Download and setup.
-This project has the following dependencies: JavaScript, Express and MySQL2 and additional dev dependencies Mocha, Chai, Supertest, Dotenv, Nodemon.  You will need to have MySQL running in a docker container on your machine. To use the database you can use [Postman](https://www.postman.com/)  To download the project:
+This project has the following dependencies: JavaScript, Express and MySQL2 and additional dev dependencies Mocha, Chai, Supertest, Dotenv, Nodemon.  You will need to have MySQL running in a [docker](https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=search_emea_brand&utm_term=docker_exact&gclid=CjwKCAjw6raYBhB7EiwABge5Kn0-PeLbzCirw11gOzKbacmNwycp6EqOZcpI3DOh0FQRob7OTECjpxoCmt0QAvD_BwE) container on your machine. To use the database you can use [Postman](https://www.postman.com/).  To download the project:
 * Fork the repository.
 * Clone down your fork using ```git clone```.
 * Change directory into your cloned folder and run ``` npm install ```.
-* Run ``` npm i -S express ```.
-* Run ``` npm i -D nodemon mocha chai supertest```. if you want to use make changes to the code and run the tests.
+* Run ``` npm i -S express mysql2```.
+* Run ``` npm i -D dotenv nodemon mocha chai supertest```. if you want to make changes to the code and run the tests.
 * To start the app run ```npm start```.
 
 
 ## Using the music library
-To start you will need to create at least 1 artist. Using Postman send a POST request to the route ```localhost:3000/artist``` with the follow JSON body.
+To start you will need to create at least 1 artist. Using Postman send a POST request to the route ```localhost:3000/artist``` with the following JSON body.
 ```
 {
     "name": "<artist name>",
