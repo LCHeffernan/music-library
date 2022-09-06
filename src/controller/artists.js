@@ -31,7 +31,7 @@ exports.read = async (req, res) => {
         artistId,
       ]);
       if (artist) {
-        res.status(200).json(artist);
+        res.status(200).json([artist]);
       } else {
         res.sendStatus(404);
       }

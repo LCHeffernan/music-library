@@ -3,7 +3,7 @@ ___
 ## Description.
 This was my first backend project which involved using SQL, MySQL and express.js, which was tested using Mocha/Chai and Supertest, the tests can be found in the tests folder.
 
-A music library is created using CRUD operations for an Artist table and an Album models. The Album table is linked to the Artist table via id in the artist table being a foreign key (artist id) in the Album table.
+A music library is created using CRUD operations for an Artist and Album table. The Album table is linked to the Artist table via id in the artist table being a foreign key (artist id) in the Album table.
 In the future I would like to add 
 * Validations and constraints to the models. 
 * Helper functions to make the code DRY.
@@ -16,8 +16,6 @@ This project has the following dependencies: JavaScript, Express and MySQL2 and 
 * Fork the repository.
 * Clone down your fork using ```git clone```.
 * Change directory into your cloned folder and run ``` npm install ```.
-* Run ``` npm i -S express mysql2```.
-* Run ``` npm i -D dotenv nodemon mocha chai supertest```. if you want to make changes to the code and run the tests.
 * To start the app run ```npm start```.
 
 

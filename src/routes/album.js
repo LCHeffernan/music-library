@@ -1,4 +1,5 @@
 const express = require('express');
+
 const albumController = require('../controller/albums');
 
 const router = express.Router();
